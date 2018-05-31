@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -90,7 +90,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h1><p>创建守护进程的的一般步骤：</p>
+        <p>创建守护进程的的一般步骤：</p>
 <p>1、fork()创建子进程，父进程exit()退出</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这是创建守护进程的第一步。由于守护进程是脱离控制终端的，因此，完成第一步后就会在Shell终端里造成程序已经运行完毕的假象。</span><br><span class="line">之后的所有工作都在子进程中完成，而用户在Shell终端里则可以执行其他命令，从而在形式上做到了与控制终端的脱离，在后台工作。</span><br></pre></td></tr></table></figure>
 <p>2、在子进程中调用 setsid() 函数创建新的会话</p>
@@ -111,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/31/守护进程/" data-id="cjhujyvan00014zdulwxcl6zd" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/05/31/守护进程/" data-id="cjhujyvan00014zdulwxcl6zd" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux／unix/">Linux／unix</a></li></ul>
@@ -125,17 +125,27 @@
   
     <article id="post-软件升级" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/28/软件升级/" class="article-date">
-  <time datetime="2018-05-28T13:35:03.000Z" itemprop="datePublished">2018-05-28</time>
+    <a href="/2018/05/31/软件升级/" class="article-date">
+  <time datetime="2018-05-31T12:59:25.000Z" itemprop="datePublished">2018-05-31</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/31/软件升级/">软件升级</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="软件升级"><a href="#软件升级" class="headerlink" title="软件升级"></a>软件升级</h1><ul>
+        <ul>
 <li><p>简介</p>
 <p>最近做了一个软件升级的需求，在查了一些资料之后，选择了bsdiff二进制增量补丁的升级方式。</p>
 <p><em>bsdiff</em>是一个差异包比较工具,可以用来实现增量更新。下载地址（<a href="http://www.daemonology.net/bsdiff" target="_blank" rel="noopener">http://www.daemonology.net/bsdiff</a>）。下载源码编译之后会生成两个可执行的程序，一个是bsdiff，用于生成补丁文件，一个是bspatch，用于安装补丁文件。</p>
@@ -155,16 +165,18 @@
 <p>patchfile:差异文件</p>
 <p>​</p>
 </li>
-<li><p><img src="/2018/05/28/软件升级/bsdiff.jpg" alt=""></p>
+<li><p><img src="/2018/05/31/软件升级/bsdiff.jpg" alt=""></p>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/28/软件升级/" data-id="cjhujyvas00024zdu6ioh44sp" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/05/31/软件升级/" data-id="cjhujyvas00024zdu6ioh44sp" class="article-share-link">Teilen</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux／unix/">Linux／unix</a></li></ul>
+
     </footer>
   </div>
   
@@ -209,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/14/链路层传输/" data-id="cjhujyvb600044zduf2ays0p0" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/03/14/链路层传输/" data-id="cjhujyvb600044zduf2ays0p0" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
@@ -297,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/07/面试经验/" data-id="cjhujyvb900054zduttm7holt" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/03/07/面试经验/" data-id="cjhujyvb900054zduttm7holt" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试经验/">面试经验</a></li></ul>
@@ -344,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/27/hello-world/" data-id="cjhujyvag00004zduuyavalb2" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/02/27/hello-world/" data-id="cjhujyvag00004zduuyavalb2" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -375,16 +387,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Linux／unix/" style="font-size: 10px;">Linux／unix</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/面试经验/" style="font-size: 10px;">面试经验</a>
+      <a href="/tags/Linux／unix/" style="font-size: 20px;">Linux／unix</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/面试经验/" style="font-size: 10px;">面试经验</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
     </div>
@@ -394,7 +406,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
@@ -403,7 +415,7 @@
           </li>
         
           <li>
-            <a href="/2018/05/28/软件升级/">(no title)</a>
+            <a href="/2018/05/31/软件升级/">软件升级</a>
           </li>
         
           <li>
@@ -431,7 +443,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 Hamlet_xiaoyu<br>
-      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
