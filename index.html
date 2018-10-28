@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -67,6 +67,79 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-动态规划" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/28/动态规划/" class="article-date">
+  <time datetime="2018-10-28T14:56:16.000Z" itemprop="datePublished">2018-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/28/动态规划/">动态规划</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>动态规划（dynamic programming），不是一个特定的算法，它是一种思想，大部分的优化问题，都可以使用动态规划来解决。</p>
+<p>动态规划的本质，是对问题状态的定义和状态转移的方程定义。</p>
+<p>dynamic programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems.</p>
+<p>–维基百科</p>
+<p>动态规划是通过拆分问题，定义问题的状态和状态间的关系，使得问题能够以递推的方式去解决。所以如何拆分问题，是动态规划的核心。而拆分问题靠的就是状态的定义和状态转移方程的定义。</p>
+<ol>
+<li>状态的定义<br>来看一个动态规划的例题：<br>给定一个数列，长度为N，求这个数列的最长上升（递增）子数列的长度。<br>例如 1 7 2 8 3 4，<br>这个数列的最长递增子数列为 1 2 3 4，长度为4；<br>想要解决这个问题，我们首先要定义这个问题和这个问题的子问题。没有子问题的话，就没有办法解决这个问题。<br>问题重新定义如下：<br>给定一个长度为N的数列，<br>设F(k)为以数列中第k项结尾的最长递增子数列的长度。<br>求F(1)…F(N)中的最大值。<br>于是对于F(k)来讲，F(1)..F(k-1)都是F(k)的子问题。<br>新问题中F(k)就是状态，“F(k)为以数列中第k项结尾的最长递增子数列的长度”就是对状态的定义。</li>
+<li>状态转移方程<br>定义好状态之后，状态之间的关系式就是状态转移方程。<br>例题中的状态转移方程为：<br>设A为题目中的数列，<br>F(1) = 1<br>F(k) = Max(F(i) + 1|A(k)&gt;A(i), 1 &lt; i &lt;k-1)  (k&gt;1)<br>即以第k项结尾的最长递增子数列的长度是：在保证第i项比第k项小的情况下，以第i项结尾的长度加一的最大值，i取遍所有小于k的值。<br>可能有点绕，多读几次试试。</li>
+<li>解决问题<br>接下来我们来使用动态规划解决一个问题。<br>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。<br>给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。<br>示例 1:<pre><code>输入: [1,2,3,1]
+输出: 4
+解释: 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。
+     偷窃到的最高金额 = 1 + 3 = 4 。
+</code></pre>示例 2:<pre><code>输入: [2,7,9,3,1]
+输出: 12
+解释: 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。
+     偷窃到的最高金额 = 2 + 9 + 1 = 12 。
+</code></pre>这个题目的本质抽象出来就是：<br>给定一个数组，长度为N，从中取出一个或者多个不相邻的数字，<br>使其和最大。<br>定义dp[i]为前i项中不相邻数字最大和。<br>求dp[N]的值。<br>状态已经有了，现在来看下状态转移方程：<br>dp[1] = A[1]<br>dp[k] = Max(dp[k-2]+A[k], dp[k-1])<br>Show me the code:<pre><code>int rob(int* num, int n) 
+{
+    if (n &lt;= 1)
+        return n == 0 ? 0 : num[0];
+    int *dp = (int*)malloc(sizeof(int) * n);
+    int ret, i;
+    dp[0] = num[0];
+    dp[1] = num[0] &gt; num[1] ? num[0] : num[1];
+    for (i = 2; i &lt; n; ++i) {
+        dp[i] = (num[i] + dp[i - 2]) &gt; dp[i - 1] ?
+                  num[i] + dp[i - 2] : dp[i - 1];
+    }
+    ret = dp[n - 1];
+    free(dp);
+    return ret;
+}
+</code></pre></li>
+<li>总结<br>说到动态规划，一些词语或多或少的会被提到，比如“缓存”，“重叠子问题”，“记忆化”，“无后效性”，“最优子结构”等等。<br>这些都跟动态规划有着联系，但并不是核心的东西，所以就不展开说明了，感兴趣的同学自行查阅。<br>总结起来，动态规划就是寻找一个新的观察角度，让问题可以以递推（分治）的方法解决。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/28/动态规划/" data-id="cjnt01e9x0002lqdukvaiyuz9" class="article-share-link">Compartir</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-python笔记-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -114,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/15/python笔记-1/" data-id="cjnag3htw0001i7duujcanosg" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/15/python笔记-1/" data-id="cjnt01e9u0001lqduq1d3jj60" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -184,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/27/贪心算法/" data-id="cjnag3hua0004i7duuysczp5w" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/09/27/贪心算法/" data-id="cjnt01eal000alqdujtrdz15y" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li></ul>
@@ -351,7 +424,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/12/不止代码笔记/" data-id="cjnag3hu50002i7dujx1o62y2" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/07/12/不止代码笔记/" data-id="cjnt01eaj0008lqduac2lvsc5" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -404,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/31/守护进程/" data-id="cjnag3huc0005i7dudmej8kcs" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/31/守护进程/" data-id="cjnt01eai0007lqdu7johwn2t" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux／unix/">Linux／unix</a></li></ul>
@@ -465,7 +538,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/31/软件升级/" data-id="cjnag3huf0006i7du9tcoho66" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/31/软件升级/" data-id="cjnt01eat000glqdutvn8jer5" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux／unix/">Linux／unix</a></li></ul>
@@ -514,7 +587,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/14/链路层传输/" data-id="cjnag3huh0009i7duyf300lz7" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/14/链路层传输/" data-id="cjnt01eam000blqdu9ctpc2u5" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
@@ -602,7 +675,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/07/面试经验/" data-id="cjnag3huk000ai7duz4ndacr4" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/07/面试经验/" data-id="cjnt01eap000dlqdus6safrzw" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试经验/">面试经验</a></li></ul>
@@ -649,7 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/27/hello-world/" data-id="cjnag3hto0000i7du5pm993jl" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/02/27/hello-world/" data-id="cjnt01e9p0000lqduau9nyb13" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -680,16 +753,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nube de Tags</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Linux／unix/" style="font-size: 20px;">Linux／unix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构与算法/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/面试经验/" style="font-size: 10px;">面试经验</a>
+      <a href="/tags/Linux／unix/" style="font-size: 20px;">Linux／unix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构与算法/" style="font-size: 20px;">数据结构与算法</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/面试经验/" style="font-size: 10px;">面试经验</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
     </div>
@@ -699,9 +772,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/10/28/动态规划/">动态规划</a>
+          </li>
         
           <li>
             <a href="/2018/10/15/python笔记-1/">python笔记-1</a>
@@ -719,10 +796,6 @@
             <a href="/2018/05/31/守护进程/">守护进程</a>
           </li>
         
-          <li>
-            <a href="/2018/05/31/软件升级/">软件升级</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -736,7 +809,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 Hamlet_xiaoyu<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
