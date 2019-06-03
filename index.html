@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -67,6 +67,68 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-excel转成html显示" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/03/excel转成html显示/" class="article-date">
+  <time datetime="2019-06-03T13:46:43.000Z" itemprop="datePublished">2019-06-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/03/excel转成html显示/">excel转成html显示</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近遇到一个需求，后台将excel文件上传，前台直接显示在页面上显示。</p>
+<p>查阅一些资料之后，最终选定的方案是将excel文件直接转成html文件，然后链接显示。</p>
+<p>excel转成html文件工具：</p>
+<p>​    libreoffice</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Name</span><br><span class="line">       libreoffice - LibreOffice office suite</span><br><span class="line"></span><br><span class="line">SYNOPSIS</span><br><span class="line">       libreoffice  [--accept=accept-string]  [--base]  [--calc] [--convert-to output_file_extension[:output_filter_name] [--outdir output_dir] file]...  [--display display]</span><br><span class="line">       [--draw] [--global] [--headless] [--help|-h|-?] [--impress] [--invisible] [--infilter="&lt;filter&gt;"] [--math] [--minimized] [-n  file]...  [--nodefault]  [--nolockcheck]</span><br><span class="line">       [--nologo] [--norestore] [-o file]... [-p file...]  [--print-to-file [--printer-name printer_name] [--outdir output_dir] file]...  [--pt printername file...]  [--show</span><br><span class="line">       Impress file]... [--unaccept=accept-string] [--terminate_after_init] [--view file]... [--web] [--writer]  [file...]</span><br><span class="line">       lobase</span><br><span class="line">       localc</span><br><span class="line">       lodraw</span><br><span class="line">       lofromtemplate</span><br><span class="line">       loimpress</span><br><span class="line">       lomath</span><br><span class="line">       loweb</span><br><span class="line">       lowriter</span><br><span class="line"></span><br><span class="line">DESCRIPTION</span><br><span class="line">       LibreOffice (LO for short) is a multi-platform office productivity suite.  It was derived from OpenOffice.org 3.3 Beta on September 28, 2010.</span><br><span class="line"></span><br><span class="line">       libreoffice is a shell script that sets up the environment and passes the command line arguments to the soffice.bin binary.</span><br><span class="line"></span><br><span class="line">       Alternatively, the following helper scripts start the respective module:</span><br><span class="line"></span><br><span class="line">       sbase, scalc, sdraw, simpress, smath, sofficerc, swriter</span><br></pre></td></tr></table></figure>
+<p>这个工具很强大，doc，pdf等格式文件都可以转换。</p>
+<p>用法示例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libreoffice --convert-to html inpout_file --outdir output_path</span><br></pre></td></tr></table></figure>
+<p>有了工具之后，功能实现如下：</p>
+<ol>
+<li><p>将文件上传，然后调用libreoffice将文件转成html格式。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (request()-&gt;isPost()) &#123;</span><br><span class="line">      $file = request()-&gt;file(<span class="string">'file'</span>);</span><br><span class="line">      <span class="keyword">if</span> (!$file) &#123;</span><br><span class="line">          <span class="keyword">$this</span>-&gt;error(<span class="string">'请上传附件'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 移动到框架应用根目录/uploads/ 目录下</span></span><br><span class="line">      $info = $file-&gt;move(Env::get(<span class="string">'root_path'</span>).<span class="string">'/uploads'</span>);</span><br><span class="line">      <span class="keyword">if</span> ($info) &#123;</span><br><span class="line">        <span class="comment">//$data = array();</span></span><br><span class="line">        $data = input(<span class="string">'post.'</span>);</span><br><span class="line">        exec(<span class="string">"libreoffice --convert-to html "</span>.Env::get(<span class="string">'root_path'</span>).<span class="string">'/uploads/'</span>.$info-&gt;getSaveName().<span class="string">" --outdir "</span>.Env::get(<span class="string">'root_path'</span>).<span class="string">'/uploads/'</span>.pathinfo($info-&gt;getSaveName()</span><br><span class="line">, PATHINFO_DIRNAME));</span><br><span class="line">        $str = explode(<span class="string">'.'</span>, $info-&gt;getSaveName());</span><br><span class="line"></span><br><span class="line">        $data[<span class="string">'fee_file'</span>] = $str[<span class="number">0</span>].<span class="string">'.html'</span>;</span><br><span class="line"></span><br><span class="line">        $add = \think\Db::name(<span class="string">'fees'</span>)-&gt;insert($data);</span><br><span class="line">        <span class="keyword">if</span> ($add) &#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;redirect(<span class="string">'lst'</span>);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;error(<span class="string">'添加失败'</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 上传失败获取错误信息</span></span><br><span class="line">        <span class="keyword">$this</span>-&gt;error($file-&gt;getError());</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+<p>遇到问题，PHP调用系统命令时出错。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">settings Disable exec, shell_exec, system, popen and Other Functions To Improve Security</span><br></pre></td></tr></table></figure>
+<p>为了安全，php默认将这几个函数都给屏蔽了。</p>
+<p>解决方法：在php.ini中修改配置。</p>
+<p>查找php.ini方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# php --ini</span><br><span class="line">Configuration File (php.ini) Path: /www/server/php/56/etc</span><br><span class="line">Loaded Configuration File:         /www/server/php/56/etc/php.ini</span><br><span class="line">Scan for additional .ini files in: (none)</span><br><span class="line">Additional .ini files parsed:      (none)</span><br></pre></td></tr></table></figure>
+<p>在文件中查找这行代码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">; This directive allows you to disable certain functions for security reasons.                                                                                                    </span><br><span class="line">; It receives a comma-delimited list of function names.                                                                                                                           </span><br><span class="line">; http://php.net/disable-functions                                                                                                                                                </span><br><span class="line">disable_functions = passthru,system,chroot,chgrp,chown,shell_exec,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru</span><br></pre></td></tr></table></figure>
+<p>将你要使用的函数从中删除，保存文件。然后重启php-fpm即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/03/excel转成html显示/" data-id="cjwgfjl2p000081dui2h65evd" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-动态规划" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -129,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/28/动态规划/" data-id="cjnt01e9x0002lqdukvaiyuz9" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/10/28/动态规划/" data-id="cjwgfjl36000481dufjggjgux" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li></ul>
@@ -187,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/15/python笔记-1/" data-id="cjnt01e9u0001lqduq1d3jj60" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/10/15/python笔记-1/" data-id="cjwgfjl34000381duyynwondr" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -257,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/27/贪心算法/" data-id="cjnt01eal000alqdujtrdz15y" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/09/27/贪心算法/" data-id="cjwgfjl44000h81dunzoixsxh" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li></ul>
@@ -424,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/12/不止代码笔记/" data-id="cjnt01eaj0008lqduac2lvsc5" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/07/12/不止代码笔记/" data-id="cjwgfjl38000581du3sz6rgju" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -477,7 +539,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/31/守护进程/" data-id="cjnt01eai0007lqdu7johwn2t" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/05/31/守护进程/" data-id="cjwgfjl3b000881dufkp4nvmr" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux／unix/">Linux／unix</a></li></ul>
@@ -538,7 +600,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/31/软件升级/" data-id="cjnt01eat000glqdutvn8jer5" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/05/31/软件升级/" data-id="cjwgfjl43000f81dulxvsdc0s" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux／unix/">Linux／unix</a></li></ul>
@@ -587,7 +649,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/14/链路层传输/" data-id="cjnt01eam000blqdu9ctpc2u5" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/03/14/链路层传输/" data-id="cjwgfjl42000e81dupkbj06sl" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
@@ -675,7 +737,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/07/面试经验/" data-id="cjnt01eap000dlqdus6safrzw" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/03/07/面试经验/" data-id="cjwgfjl46000j81duzjqb2oxi" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试经验/">面试经验</a></li></ul>
@@ -722,7 +784,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/27/hello-world/" data-id="cjnt01e9p0000lqduau9nyb13" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/02/27/hello-world/" data-id="cjwgfjl2y000181duerwa8tj2" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -745,7 +807,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux／unix/">Linux／unix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试经验/">面试经验</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux／unix/">Linux／unix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试经验/">面试经验</a></li></ul>
     </div>
   </div>
 
@@ -753,18 +815,18 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Linux／unix/" style="font-size: 20px;">Linux／unix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构与算法/" style="font-size: 20px;">数据结构与算法</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/面试经验/" style="font-size: 10px;">面试经验</a>
+      <a href="/tags/Linux／unix/" style="font-size: 20px;">Linux／unix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/数据结构与算法/" style="font-size: 20px;">数据结构与算法</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/面试经验/" style="font-size: 10px;">面试经验</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
     </div>
   </div>
 
@@ -772,9 +834,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/06/03/excel转成html显示/">excel转成html显示</a>
+          </li>
         
           <li>
             <a href="/2018/10/28/动态规划/">动态规划</a>
@@ -792,10 +858,6 @@
             <a href="/2018/07/12/不止代码笔记/">不止代码笔记</a>
           </li>
         
-          <li>
-            <a href="/2018/05/31/守护进程/">守护进程</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -808,8 +870,8 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 Hamlet_xiaoyu<br>
-      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2019 Hamlet_xiaoyu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
