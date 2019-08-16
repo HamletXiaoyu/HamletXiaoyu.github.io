@@ -5,23 +5,17 @@
   
 
   
-  <title>链路层传输 | 贾晓雨的博客</title>
+  <title>Archiv | 贾晓雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="二层链路传输方式 提到二层传输，几个概念要先讲一下。 交换机，在于把很多个电脑连到一起,形成一个局域网,内部可以互相交流。 ARP（地址解析协议）简单来说就是根据IP地址获取物理地址的协议。 链路层是靠目的主机的MAC地址进行传输的。当我们不知道目的主机的MAC地址时就需要ARP来帮助我们了。 比如我们ping一个同网段的主机，假设其IP地址为192.168.1.254。因为不知道其MAC地址，这">
-<meta name="keywords" content="计算机网络">
-<meta property="og:type" content="article">
-<meta property="og:title" content="链路层传输">
-<meta property="og:url" content="http://yoursite.com/2018/03/14/链路层传输/index.html">
+  <meta name="description" content="欢迎关注我的微信公众号-我有个程序员朋友">
+<meta property="og:type" content="website">
+<meta property="og:title" content="贾晓雨的博客">
+<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
 <meta property="og:site_name" content="贾晓雨的博客">
-<meta property="og:description" content="二层链路传输方式 提到二层传输，几个概念要先讲一下。 交换机，在于把很多个电脑连到一起,形成一个局域网,内部可以互相交流。 ARP（地址解析协议）简单来说就是根据IP地址获取物理地址的协议。 链路层是靠目的主机的MAC地址进行传输的。当我们不知道目的主机的MAC地址时就需要ARP来帮助我们了。 比如我们ping一个同网段的主机，假设其IP地址为192.168.1.254。因为不知道其MAC地址，这">
-<meta property="og:image" content="http://yoursite.com/2018/03/14/链路层传输/Jietu20180314-212319.png">
-<meta property="og:image" content="http://yoursite.com/2018/03/14/链路层传输/Jietu20180314-212622.png">
-<meta property="og:image" content="http://yoursite.com/2018/03/14/链路层传输/Jietu20180314-212636.png">
-<meta property="og:updated_time" content="2018-03-14T13:56:40.000Z">
+<meta property="og:description" content="欢迎关注我的微信公众号-我有个程序员朋友">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="链路层传输">
-<meta name="twitter:description" content="二层链路传输方式 提到二层传输，几个概念要先讲一下。 交换机，在于把很多个电脑连到一起,形成一个局域网,内部可以互相交流。 ARP（地址解析协议）简单来说就是根据IP地址获取物理地址的协议。 链路层是靠目的主机的MAC地址进行传输的。当我们不知道目的主机的MAC地址时就需要ARP来帮助我们了。 比如我们ping一个同网段的主机，假设其IP地址为192.168.1.254。因为不知道其MAC地址，这">
-<meta name="twitter:image" content="http://yoursite.com/2018/03/14/链路层传输/Jietu20180314-212319.png">
+<meta name="twitter:title" content="贾晓雨的博客">
+<meta name="twitter:description" content="欢迎关注我的微信公众号-我有个程序员朋友">
   
     <link rel="alternate" href="/atom.xml" title="贾晓雨的博客" type="application/atom+xml">
   
@@ -72,73 +66,45 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-链路层传输" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/14/链路层传输/" class="article-date">
-  <time datetime="2018-03-14T13:37:10.000Z" itemprop="datePublished">2018-03-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      链路层传输
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2018/02/27/hello-world/" class="archive-article-date">
+  <time datetime="2018-02-27T13:04:00.000Z" itemprop="datePublished">Feb 27</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/02/27/hello-world/">Hello World</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>二层链路传输方式</p>
-<p>提到二层传输，几个概念要先讲一下。</p>
-<p>交换机，在于把很多个电脑连到一起,形成一个局域网,内部可以互相交流。</p>
-<p>ARP（地址解析协议）简单来说就是根据IP地址获取物理地址的协议。</p>
-<p>链路层是靠目的主机的MAC地址进行传输的。当我们不知道目的主机的MAC地址时就需要ARP来帮助我们了。</p>
-<p>比如我们ping一个同网段的主机，假设其IP地址为192.168.1.254。因为不知道其MAC地址，这时候我们会向交换机发一个请求包，告诉他我们要找192.168.1.254这个主机。于是交换机就会发一个广播给链接在其上的所有主机（除了请求主机）。这时候目的主机接收到了有人找自己的消息，就把自己的MAC地址告诉了交换机，然后交换机将这个地址给了我们，我们就可以给目的主机发送消息了。</p>
-<p><img src="/2018/03/14/链路层传输/Jietu20180314-212319.png" alt="Jietu20180314-212319"></p>
-<p>使用抓包工具可以看到ARP请求和ARP应答。图中是使用192.168.1.101去ping192.168.1.1</p>
-<p>下面两张图分别是ARP请求和相应的ARP应答的分组格式截图。</p>
-<p><img src="/2018/03/14/链路层传输/Jietu20180314-212622.png" alt="Jietu20180314-212622"></p>
-<p><img src="/2018/03/14/链路层传输/Jietu20180314-212636.png" alt="Jietu20180314-212636"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/14/链路层传输/" data-id="cjze77dgh000nubdu6lq70gcn" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/05/31/软件升级/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          软件升级
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/03/07/面试经验/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">那些年，面过的试</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/archives/">&laquo; zurück</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </section>
         
